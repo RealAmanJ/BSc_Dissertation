@@ -44,7 +44,7 @@ setwd("")
 ############################################################# Section 3: Import files ######################################################
 
 #Import the .RDS file
-dat_info_42k                            <- readRDS("JH18_rare_nowater_42K_1020.rds")
+dat_info_42k                            <- readRDS("dat_rare_42K.rds")
 
 ############################################################# Section 4: Creating the richness plot ########################################
 
