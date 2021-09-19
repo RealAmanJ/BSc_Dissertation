@@ -26,7 +26,7 @@ library("svglite")
 #If not installed, use this code
 #install.packages("phyloseq")
 
-#if above line does not work for installing phyloseq, try the line below
+#If above line does not work for installing phyloseq, try the lines below
 #source("https://raw.githubusercontent.com/joey711/phyloseq/master/inst/scripts/installer.R",
 #local = TRUE)
 
