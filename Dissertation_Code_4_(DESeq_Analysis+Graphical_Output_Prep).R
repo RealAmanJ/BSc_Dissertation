@@ -30,6 +30,12 @@ library("viridis")
 #If not installed, use this code
 #install.packages("phyloseq")
 #install.packages("DESeq2")
+
+# If above line does not work for installing DESeq2, try the lines below
+#if (!requireNamespace("BiocManager", quietly = TRUE))
+#  install.packages("BiocManager")
+#BiocManager::install("DESeq2")
+
 #install.packages("dplyr")
 #install.packages("ggplot2")
 #install.packages("ggpubr")
@@ -45,7 +51,7 @@ setwd("")
 ############################################################# Section 3: Import files and subset by field ##################################
 
 #Import the .RDS file
-dat_info_42k                            <- readRDS("JH18_rare_nowater_42K_1020.rds")
+dat_info_42k                            <- readRDS("dat_rare_42k.rds")
 
 #Inspect the file
 class(dat_info_42k)
@@ -554,25 +560,39 @@ minzoni_only                            <- setdiff(
 #Save files for UpsetR analysis in subsequent code
 
 #!!!!!!!!!!!!!!!!!!!!REMEMBER TO REPLACE THE HASHTAGS FOR THESE LINES BEFORE EXITING THE CODE!!!!!!!!!!!!!!!!!!!!
-#saveRDS(dat_spinach_ASVs, file ="JH18_dat_spinach_ASVs.rds")
+#dat_spinach_ASVs                                                                %>%
+#  saveRDS(file ="JH18_dat_spinach_ASVs.rds")
 
-#saveRDS(Dragoni_enriched_FDR005_root, file ="JH18_dragoni_enriched_root_all.rds")
-#saveRDS(Dragoni_enriched_FDR005_rhizo, file ="JH18_dragoni_enriched_rhizo_all.rds")
-#saveRDS(Minzoni_enriched_FDR005_root, file ="JH18_minzoni_enriched_root_all.rds")
-#saveRDS(Minzoni_enriched_FDR005_rhizo, file ="JH18_minzoni_enriched_rhizo_all.rds")
+#Dragoni_enriched_FDR005_root                                                    %>%
+#  saveRDS(file ="JH18_dragoni_enriched_root_all.rds")
+#Dragoni_enriched_FDR005_rhizo                                                   %>%
+#  saveRDS(file ="JH18_dragoni_enriched_rhizo_all.rds")
+#Minzoni_enriched_FDR005_root                                                    %>%
+#  saveRDS(file ="JH18_minzoni_enriched_root_all.rds")
+#Minzoni_enriched_FDR005_rhizo                                                   %>%
+#  saveRDS(file ="JH18_minzoni_enriched_rhizo_all.rds")
 
-#saveRDS(root_intersect_enriched, file ="JH18_enriched_root_intersects.rds")
-#saveRDS(root_enriched_dragoni, file ="JH18_only_dragoni_enriched_root.rds")
-#saveRDS(root_enriched_minzoni, file ="JH18_only_minzoni_enriched_root.rds")
+#root_intersect_enriched                                                         %>%
+#  saveRDS(file ="JH18_enriched_root_intersects.rds")
+#root_enriched_dragoni                                                           %>%
+#  saveRDS(file ="JH18_only_dragoni_enriched_root.rds")
+#root_enriched_minzoni                                                           %>%
+#  saveRDS(file ="JH18_only_minzoni_enriched_root.rds")
 
-#saveRDS(rhizo_intersect_enriched, file ="JH18_enriched_rhizo_intersect.rds")
-#saveRDS(rhizo_enriched_dragoni, file ="JH18_only_dragoni_enriched_rhizo.rds")
-#saveRDS(rhizo_enriched_minzoni, file ="JH18_only_minzoni_enriched_rhizo.rds")
+#rhizo_intersect_enriched                                                        %>%
+#  saveRDS(file ="JH18_enriched_rhizo_intersect.rds")
+#rhizo_enriched_dragoni                                                          %>%
+#  saveRDS(file ="JH18_only_dragoni_enriched_rhizo.rds")
+#rhizo_enriched_minzoni                                                          %>%
+#  saveRDS(file ="JH18_only_minzoni_enriched_rhizo.rds")
 
-#saveRDS(core_enriched, file ="Spinach_core_microbiota.rds")
+#core_enriched                                                                   %>%
+#  saveRDS(file ="Spinach_core_microbiota.rds")
 
-#saveRDS(dragoni_only, file ="JH18_dragoni_only.rds")
-#saveRDS(minzoni_only, file ="JH18_minzoni_only.rds")
+#dragoni_only                                                                    %>%
+#  saveRDS(file ="JH18_dragoni_only.rds")
+#minzoni_only                                                                    %>%
+#  saveRDS(file ="JH18_minzoni_only.rds")
 #!!!!!!!!!!!!!!!!!!!!REMEMBER TO REPLACE THE HASHTAGS FOR THESE LINES BEFORE EXITING THE CODE!!!!!!!!!!!!!!!!!!!!
 
 ############################################################# Section 12: Phyloseq Output File Preparation #################################
@@ -622,18 +642,27 @@ JH18_minzoni_only                       <- prune_taxa(
 ############################################################# Section 13: Phyloseq Output Files Saving #####################################
 
 #!!!!!!!!!!!!!!!!!!!!REMEMBER TO REPLACE THE HASHTAGS FOR THESE LINES BEFORE EXITING THE CODE!!!!!!!!!!!!!!!!!!!!
-#saveRDS(JH18_root_enriched_intersect_phyloseq, file ="JH18_root_enriched_intersect_phyloseq.rds")
-#saveRDS(JH18_root_enriched_dragoni_phyloseq, file ="JH18_root_enriched_dragoni_phyloseq.rds")
-#saveRDS(JH18_root_enriched_minzoni_phyloseq, file ="JH18_root_enriched_minzoni_phyloseq.rds")
+#JH18_root_enriched_intersect_phyloseq                                           %>%
+#  saveRDS(file ="JH18_root_enriched_intersect_phyloseq.rds")
+#JH18_root_enriched_dragoni_phyloseq                                             %>%
+#  saveRDS(file ="JH18_root_enriched_dragoni_phyloseq.rds")
+#JH18_root_enriched_minzoni_phyloseq                                             %>%
+#  saveRDS(file ="JH18_root_enriched_minzoni_phyloseq.rds")
 
-#saveRDS(JH18_root_enriched_intersect_phyloseq, file ="JH18_rhizo_enriched_intersect_phyloseq.rds")
-#saveRDS(JH18_rhizo_enriched_dragoni_phyloseq, file ="JH18_rhizo_enriched_dragoni_phyloseq.rds")
-#saveRDS(JH18_rhizo_enriched_minzoni_phyloseq, file ="JH18_rhizo_enriched_minzoni_phyloseq.rds")
+#JH18_root_enriched_intersect_phyloseq                                           %>%
+#  saveRDS(file ="JH18_rhizo_enriched_intersect_phyloseq.rds")
+#JH18_rhizo_enriched_dragoni_phyloseq                                            %>%
+#  saveRDS(file ="JH18_rhizo_enriched_dragoni_phyloseq.rds")
+#JH18_rhizo_enriched_minzoni_phyloseq                                            %>%
+#  saveRDS(file ="JH18_rhizo_enriched_minzoni_phyloseq.rds")
 
-#saveRDS(JH18_core_enriched_phyloseq, file ="JH18_core_enriched_phyloseq.rds")
+#JH18_core_enriched_phyloseq                                                     %>%
+#  saveRDS(file ="JH18_core_enriched_phyloseq.rds")
 
-#saveRDS(JH18_dragoni_only, file ="JH18_dragoni_only_phyloseq.rds")
-#saveRDS(JH18_minzoni_only, file ="JH18_minzoni_only_phyloseq.rds")
+#JH18_dragoni_only                                                               %>%
+#  saveRDS(file ="JH18_dragoni_only_phyloseq.rds")
+#JH18_minzoni_only                                                               %>%
+#  saveRDS(file ="JH18_minzoni_only_phyloseq.rds")
 #!!!!!!!!!!!!!!!!!!!!REMEMBER TO REPLACE THE HASHTAGS FOR THESE LINES BEFORE EXITING THE CODE!!!!!!!!!!!!!!!!!!!!
 
 #In next code we will use these pre-generated objects to visualize the bacteria being differentially enriched
