@@ -36,6 +36,7 @@ library("viridis")
 #install.packages("ggplot2")
 #install.packages("gt")
 #install.packages("webshot")
+#webshot::install_phantomjs()
 #install.packages("UpSetR")
 #install.packages("hrbrthemes")
 #install.packages("viridis")
@@ -50,8 +51,8 @@ setwd("")
 ############################################################# Section 3: Import files and subset by field ####################
 
 #Import the .RDS file
-dat_info_42k                            <- readRDS("JH18_rare_nowater_42K_1020.rds")
-dat_info_42k                            <- readRDS("JH18_rare_nowater_42K_1020.rds")
+dat_info_42k                            <- readRDS("dat_rare_42K.rds")
+
 #Inspect the files
 class(dat_info_42k)
 dat_info_42k
@@ -273,7 +274,7 @@ minzoni_table                           <- minzoni_table                        
 ce_family_genera                          <- na.omit(dat_core_enriched[,5:6])
 
 #Sort families
-ce_family_genera                          <- ce_family_genera %>%
+ce_family_genera                          <- ce_family_genera                   %>%
   arrange(Family)
 
 ###Dragoni
@@ -359,8 +360,8 @@ genera_gt_CE                            <- gt(ce_family_genera)                 
 genera_gt_CE
 
 #Save the table
-#gtsave(data = genera_gt_CE, filename = "Genera Core Enriched.png")
-
+#genera_gt_CE                                                                    %>%
+#  gtsave(filename = "Genera Core Enriched.png")
 
 ###Dragoni
 #Create the table
@@ -372,8 +373,8 @@ genera_gt_dragoni                       <- gt(dragoni_family_genera)            
 genera_gt_dragoni
 
 #Save the table
-#gtsave(data = genera_gt_dragoni, filename = "Genera Dragoni Enriched.png")
-
+#genera_gt_dragoni                                                               %>%
+#  gtsave(filename = "Genera Dragoni Enriched.png")
 
 ###Minzoni
 #Create the table
@@ -385,6 +386,7 @@ genera_gt_minzoni                       <- gt(minzoni_family_genera)            
 genera_gt_minzoni
 
 #Save the table
-#gtsave(data = genera_gt_minzoni, filename = "Genera Minzoni Enriched.png")
+#genera_gt_minzoni                                                               %>%
+#  gtsave(filename = "Genera Minzoni Enriched.png")
 
 #END OF SCRIPT
